@@ -1,5 +1,7 @@
 FROM python:3.8-slim
 
+LABEL version=v0.1.0
+
 EXPOSE 5000
 
 WORKDIR /app
