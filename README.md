@@ -11,4 +11,9 @@ Erst Deployment erstellen, dann Web-App Erstellen.
 Dannach Abreißen mit Instanz löschen und App Service Plan löschen.
 
 ### Terraform Deployment on Azure
-
+- Initialize Terraform project: `terraform init`
+- Validate main.tf file: `terraform validate`
+- Deploy App: `terraform apply`
+    - `image` and `image_tag` -> use the one from your dockerhub
+    - `location` -> `eastus2`
+- Shutdown deployment: `terraform destroy`
