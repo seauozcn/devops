@@ -131,3 +131,7 @@ dmypy.json
 #Vagrant
 .Vagrant
 __pycache__
+
+#Terraform
+.terraform*
+.tfstate

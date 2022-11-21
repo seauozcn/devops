@@ -17,7 +17,7 @@ resource "azurerm_resource_group" "rg-dhbw-devops" {
   location = "eastus2"
 }
 
-resource "azurerem_service_plan" "app-servie-plan" {
+resource "azurerm_service_plan" "app-service-plan" {
   name = "plan-dhbw"
   resource_group_name = azurerm_resource_group.rg-dhbw-devops.name
   location = azurerm_resource_group.rg-dhbw-devops.location
@@ -25,11 +25,11 @@ resource "azurerem_service_plan" "app-servie-plan" {
   os_type = "Linux"
 }
 
-resource "azurerem_linux_web_app" "app" {
+resource "azurerm_linux_web_app" "app" {
   name = "app-dhbw-test123" # eigener Name
   resource_group_name = azurerm_resource_group.rg-dhbw-devops.name
   location = azurerm_resource_group.rg-dhbw-devops.location
-  service_plan_id = azurerem_service_plan.app-service-plan.id
+  service_plan_id = azurerm_service_plan.app-service-plan.id
 
   site_config {
     always_on = false
