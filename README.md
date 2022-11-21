@@ -10,3 +10,5 @@ Erst Deployment erstellen, dann Web-App Erstellen.
 - WEBSITES_PORT=5000
 Dannach Abreißen mit Instanz löschen und App Service Plan löschen.
 
+### Terraform Deployment on Azure
+
