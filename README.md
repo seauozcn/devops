@@ -26,3 +26,4 @@ sonarqube:latest`
     - user: `admin`
     - pwd: `admin`
 
+# CICD
