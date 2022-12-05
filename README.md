@@ -19,13 +19,10 @@ Dannach Abreißen mit Instanz löschen und App Service Plan löschen.
 - Shutdown deployment: `terraform destroy`
 
 ## Tests
-### Python Tests
-
 ### SonarQube
 - Run on docker: `docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:latest`
 sonarqube:latest`
 - Open in Webbrowser: `http://localhost:9000`
     - user: `admin`
     - pwd: `admin`
-- 
 
