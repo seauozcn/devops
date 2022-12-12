@@ -33,9 +33,11 @@ Schritte zum Deployment, der App auf Azure mit Terraform:
 ## Testen
 
 ### Unit Tests
+
 Verwendet wird [pytest](https://docs.pytest.org/en/latest/). Die Unit Tests sind in [test_unit_example.py](./tests/unit/test_unit_example.py) definiert. Diese testen die Funktionen der App. HIER FEHLT WAS!!!!
 
 ### Integration Tests
+
 Verwendet wird [pytest](https://docs.pytest.org/en/latest/). In [test_index.py](./tests/functional/test_index.py) sind die Integration Tests definiert. Diese testen ob die Endpunkte der App funktionieren (/index, /hello).
 
 ### SonarQube
@@ -47,15 +49,19 @@ sonarqube:latest`
     - pwd: `admin`
 
 ## CI/CD
+
 Im github Repo sind die Github Actions definiert. Diese werden bei jedem Push und Pull Request auf dem Main Branch ausgeführt. Die Actions sind in [ci.yml](./.github/workflows/ci.yml) und [cd.yml](./.github/workflows/cd.yml) definiert.
 
 ### CI
+
 Startet eine Ubuntu VM, installiert Python und führt die Unit Tests aus. Wenn die Tests erfolgreich sind, wird der Code in den Main Branch gepusht.
 
 ### CD (Azure)
+
 Startet eine Ubuntu VM, loggt sich mit hinterlegten Credentials bei DockerHub ein baut das Docker Image und pusht es auf DockerHub. Anschließend wird das Docker Image auf Azure geholt und als Web-App deployed.
 
 ## Monitoring
+
 Beim Deployment werden Metriken mittels Prometeus gesammelt und in Grafana visualisiert. Hierfür werden durch Docker Compose drei Container in folgender Reihenfolge gestartet:
 - App
     - Port: 5000
@@ -67,3 +73,4 @@ Beim Deployment werden Metriken mittels Prometeus gesammelt und in Grafana visua
     - Port: 3000
     - Image `grafana/grafana`
 
+Das Grafana Dashboard ist in [example.json](./grafana/dashboards/example.json) definiert. Dieses kann in Grafana importiert werden.
