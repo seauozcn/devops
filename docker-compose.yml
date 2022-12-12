@@ -2,14 +2,44 @@
 # Devops Python App Deployment
 # ----------------------------------------------
 # Defines the Version of Docker Compose Used
-version: "3.9"
+
+# version: "3.9"
+version: "3.4"
 # Lists all deployed services
 # For us the service web only runs the container we created (in this case the one from my docker account)
 # and it forwards the container port 5000 (inside docker) to port 80 on our system 
 # (this is where we can reach it).
 services:
-  web:
-    image: sgtmate/devops:v0.0.1
-    ports: 
-      - "80:5000"
+  # web:
+  #   image: sgtmate/devops:v0.0.1
+  #   ports:
+  #     - "80:5000"
 
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 5000:5000
+
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:latest
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus/config.yml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - app
+
+  grafana:
+    image: grafana/grafana:latest
+    volumes:
+      - ./grafana/config.ini:/etc/grafana/grafana.ini
+      - ./grafana/datasource.yaml:/etc/grafana/provisioning/datasources/default.yaml
+      - ./grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/default.yaml
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    ports:
+      - 3000:3000
+    depends_on:
+      - prometheus
