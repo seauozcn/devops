@@ -10,17 +10,17 @@ version: "3.4"
 # and it forwards the container port 5000 (inside docker) to port 80 on our system 
 # (this is where we can reach it).
 services:
-  # web:
-  #   image: sgtmate/devops:v0.0.1
-  #   ports:
-  #     - "80:5000"
-
   app:
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+    image: sgtmate/devops:v0.0.1
     ports:
       - 5000:5000
+
+  #app:
+  #  build:
+  #    context: .
+  #    dockerfile: ./Dockerfile
+  #  ports:
+  #    - 5000:5000
 
   prometheus:
     container_name: prometheus
@@ -28,7 +28,7 @@ services:
     ports:
       - 9090:9090
     volumes:
-      - ./prometheus/config.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/config.yaml:/etc/prometheus/prometheus.yaml
     depends_on:
       - app
 

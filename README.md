@@ -26,3 +26,9 @@ sonarqube:latest`
     - user: `admin`
     - pwd: `admin`
 
+## Monitoring
+- Prometeus:
+    - Port: 9090
+- Grafana:
+    - Port: 3000
+    
